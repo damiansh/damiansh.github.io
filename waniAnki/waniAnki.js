@@ -66,7 +66,7 @@ async function createKanji(data){
 			meaning = meaning + ", " + data.meanings[i].meaning;
 		}
 	}
-	item1.innerHTML = "<a href='" + data.document_url + "'>" + meaning +  "</a> — <strong>Level:</strong> " + data.level;
+	item1.innerHTML = "<a href='" + data.document_url + "'>" + meaning +  "</a> — <strong>" + data.level + "</strong>";
 	//item 2 - slug
 	item2.innerHTML = data.slug;
 	
