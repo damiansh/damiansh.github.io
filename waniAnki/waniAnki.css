@@ -1,8 +1,8 @@
-.item1 { grid-area: header;font-size: 30px; }
-.item2 { grid-area: menu; font-size:50px; }
-.item3 { grid-area: main; font-size: 30px;}
-.item4 { grid-area: right;font-size: 20px; }
-.item5 { grid-area: footer; font-size: 20px;}
+.item1 { grid-area: header;font-size: 30px; } /*item 1 - meaning */ 
+.item2 { grid-area: menu; font-size:50px; } /*item 2 - slug*/ 
+.item3 { grid-area: main; font-size: 30px;} /*item 3 - radicals*/ 
+.item4 { grid-area: right;font-size: 20px; } /*item 4 - readings*/ 
+.item5 { grid-area: footer; font-size: 20px;} /*item 5 - mnemonic*/ 
 
 .grid-container {
   display: grid;
@@ -26,12 +26,24 @@
 radical{
 	background-color:#00a1f1;
 	border-radius: 15px;
-    padding: 3px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
 	color: #FFF;
-	font-weight: bold;
+	font-weight: 600;
 	}
 
-.raSpan{
+.component{
+	background-color:#00a1f1;
+	border-radius: 15px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	font-weight: 600;
+	}
+.ralink{
 	background-color:#00a1f1;
 	border-radius: 15px;
     padding: 3px;
@@ -42,12 +54,55 @@ radical{
 	margin-bottom:-5px;
 	}	
 	
-
+a{
+ text-decoration: none;
+ color:#FFF;
+ font-weight: 500;
+}
 kanji{
+	background-color:#f100a1;
+	border-radius: 15px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	color: #FFF;
+	font-weight: bold;
+	}	
+jlpt{
+	background-color:#b3e6b3;
+	border-radius: 15px;
+    padding-top: 0px;
+	padding-right: 7px;
+	padding-bottom: 0px;
+	padding-left: 7px;
+	color: #000;
+	font-size:20px;
+	font-weight: bold;
+	}
+wk{
+	background-color:#B6327A;
+	border-radius: 15px;
+    padding-top: 0px;
+	padding-right: 7px;
+	padding-bottom: 0px;
+	padding-left: 7px;
+	color: #FFF;
+	font-size:20px;
+	font-weight: bold;
+	}	
+slug{
+	background-color:#f100a1;
+	border-radius: 15px;
+    padding: 3px;
+	color: #FFF;
+	}	
+	
+.translation{
 	background-color:#f100a1;
 	border-radius: 15px;
     padding: 3px;
 	color: #FFF;
 	font-weight: bold;
 
-	}	
+	}
