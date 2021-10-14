@@ -129,7 +129,7 @@ function sortKanji(){
  * @param {object} data - the JSON data recovered from WK. 
  */
 async function createKanji(data,jsKanji){
-	console.log(data);
+	//console.log(data);
 	kanjiInfo = document.getElementById('kanjiInfo');
 	const grid = document.createElement('div');
 	grid.classList.add('grid-container');
