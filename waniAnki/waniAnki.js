@@ -326,7 +326,7 @@ async function getSubject(apiEndpointPath){
  * @param {char} kanji - the kanji slug 
  */
 function getURL (kanji) {
-    return "https://shiharokuu.github.io/waniAnki/kanjidamage/" + kanji;
+    return "https://damiansh.github.io/waniAnki/kanjidamage/" + kanji;
 }
 
 /**
@@ -372,7 +372,7 @@ function getMnemonic(code){
 			//console.log(oIMG);
 			oIMG = oIMG.split('/');
 			oIMG = oIMG[oIMG.length-1];
-			imgs[i].src="https://shiharokuu.github.io/waniAnki/visualaids/" + oIMG;
+			imgs[i].src="https://damiansh.github.io/waniAnki/visualaids/" + oIMG;
 			//console.log(links[i]);
 		}
 		return mHTML.body.innerHTML; //return second result.
@@ -412,7 +412,7 @@ function getRadicals(code,kanjiIn){
 			//console.log(oIMG);
 			oIMG = oIMG.split('/');
 			oIMG = oIMG[oIMG.length-1];
-			imgs[i].src="https://shiharokuu.github.io/waniAnki/assets/radsmall/" + oIMG;
+			imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
 			//console.log(links[i]);
 		}
 		return rHTML.body.innerHTML; //return second result.
