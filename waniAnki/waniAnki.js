@@ -4,26 +4,99 @@
 // @author           https://www.reddit.com/user/Damshh
 // @license          MIT
 // @credits 		 Thanks to WaniKani, https://kanjiapi.dev/, jisho.org, and KanjiDamage for all of this. 
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+
+kanjiBlank = {
+    "kanji": "",
+    "grade": 0,
+    "stroke_count": 0,
+    "meanings": [
+        "Unknown"
+    ],
+    "kun_readings": [
+        "N/A"
+    ],
+    "on_readings": [
+        "N/A"
+    ],
+    "name_readings": [
+        "N/A"
+    ],
+    "jlpt": null,
+    "unicode": "4e11",
+    "heisig_en": "sign of the cow"
+};	
+
+wkBlank = {
+    "level": "",
+    "slug": "",
+    "document_url": "",
+    "characters": "NOPE",
+    "meanings": [
+        {
+            "meaning": "",
+        }
+    ],
+    "readings": [
+        {
+            "type": "onyomi",
+            "reading": "",
+        },
+        {
+            "type": "kunyomi",
+            "reading": "",
+        }
+    ],
+    "component_subject_ids": [],
+
+    "meaning_mnemonic": "",
+};
 
 wanikani();
+
+
 
 /**
  * This method starts the process by getting the kanji information from WaniKani API. 
  * @main 
  */
 async function wanikani(){
-	kanjiInfo = document.getElementById('kanjiInfo');
+	var jsKanji = await kanjiJSON();
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
 	//console.log(k);}
 	kanjiJS = await getSubject("subjects?types=kanji&slugs=" + k);
-	if(kanjiJS.length==0) kanjiJS = await getSubject("subjects?types=kanji&slugs=一");
+	if(kanjiJS.length==0) kanjiJS = wkBlank;
 	sorted = sortKanji();
 	//console.log(sorted);
 	for(let i = 0; i < sorted.length; i++){
-		await createKanji(sorted[i]);
+		await createKanji(sorted[i],jsKanji);
 	}
+}
+
+/**
+ * This method calls the json for the KANJI 
+ */ 
+async function kanjiJSON(){
+	var kanjiJS = "";
+	await $.getJSON("../json/japanese/kanji.json", function(json) {
+		kanjiJS = json;
+	});			
+	return kanjiJS;
 }
 
 /**
@@ -37,14 +110,12 @@ function sortKanji(){
 		for(let j = 0;j<kanjiJS.length;j++){
 			if(kanjiJS[j].data.slug==kanjiArr[i]){
 				sortedKanji[index]=kanjiJS[j].data;
-				
 			}
 		}
 		if(sortedKanji[index]==null){
 			noWK = new Object();
-			Object.assign(noWK, kanjiJS[0].data);
+			Object.assign(noWK, wkBlank);
 			noWK.slug =kanjiArr[i];
-			noWK.characters = "NOPE";
 			sortedKanji[index]=noWK;			
 		}
 		index++;
@@ -57,7 +128,9 @@ function sortKanji(){
  * The main method that builds the html for the kanji within Anki
  * @param {object} data - the JSON data recovered from WK. 
  */
-async function createKanji(data){
+async function createKanji(data,jsKanji){
+	console.log(data);
+	kanjiInfo = document.getElementById('kanjiInfo');
 	const grid = document.createElement('div');
 	grid.classList.add('grid-container');
 	//divs for items
@@ -89,28 +162,23 @@ async function createKanji(data){
 	if(data.characters === 'NOPE'){
 		data.document_url=getURL(data.slug);
 		code = await getCode(data.document_url);
-		kanjiAPI = await getCode(getAPI(data.slug));
+		kanjiAPI = jsKanji[data.slug];
 		//console.log(kanjiAPI);
 		if(code==="404") data.document_url="https://jisho.org/search/" + data.slug + "%20%23kanji";
 		//KanjIDamage
 		data.meaning_mnemonic = getMnemonic(code); 
 		item3.innerHTML = getRadicals(code,data.slug);
 		data.component_subject_ids = new Array(0);
+		if(kanjiAPI==null) kanjiAPI =kanjiBlank;
 		data.level = "<jlpt><span title='jlpt level'>JLPT n" + kanjiAPI.jlpt + "</span></jlpt>";
 		if(kanjiAPI.jlpt==null){
 			data.level="<jlpt><span title='jlpt level'>n/a</span></jlpt>"
 		}
-		data.meanings = ["<kanji>Unknown</kanji>"];
-		var readings = {kun:["N/A"], on:["N/A"]};
+		var readings = {kun:kanjiAPI.kun_readings, on:kanjiAPI.on_readings};
 		data.readings = readings;
-		
-		if(kanjiAPI!="404"){
-			readings["kun"]=kanjiAPI.kun_readings;
-			readings["on"]=kanjiAPI.on_readings;
-			data.meanings=kanjiAPI.meanings;
-		}
-		onyomi = data.readings["kun"].join(", ");
-		kunyomi = data.readings["on"].join(", ");
+		data.meanings=kanjiAPI.meanings;
+		onyomi = readings["kun"].join(", ");
+		kunyomi = readings["on"].join(", ");
 		
 		//console.log(data.slug + " no esta en WK");
 	}
@@ -259,14 +327,6 @@ async function getSubject(apiEndpointPath){
  */
 function getURL (kanji) {
     return "https://shiharokuu.github.io/waniAnki/kanjidamage/" + kanji;
-}
-
-/**
- * Method to get the URL for the kanjiAPI.dev 
- * @param {char} kanji - the kanji slug 
- */
-function getAPI (kanji) {
-    return "https://kanjiapi.dev/v1/kanji/" + kanji;
 }
 
 /**
