@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kanji Sheets</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="container">
+      <header id="header">
+         <h1>Kanji Worksheets</h1> 
+      </header>
+
+      <div id="sidebar">
+        <div class="category">
+          <h2 class="category-title">Settings</h2>
+          <div class="category-content">
+            <label for="guideLinesToggle">Guide Lines:</label>
+            <input type="checkbox" id="guideLinesToggle" oninput="kanji.Kanji.toggleGuideLines()" />
+            <br/>
+            <label for="fontSelector">Font:</label>
+            <select id="fontSelector" oninput="kanji.Kanji.setFont()"">
+              <option value="Mitimasu">Mitimasu</option>
+              <option value="YOzFont">Y.OzFont</option>
+              <option value="Choumei">Choumei</option>
+              <option value="StrokeOrder">Stroke Order</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="content">
+      </div>
+
+
+    </div>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="js/kanji.js"></script>
+  </body>
+</html>

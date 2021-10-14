@@ -1,0 +1,384 @@
+/* Global */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size:13px;
+
+    px;
+}
+
+@font-face {
+  font-family: StrokeOrder;
+  src: url('../fonts/KanjiStrokeOrders.ttf');
+}
+
+@font-face {
+  font-family: Mitimasu;
+  src: url('../fonts/Mitimasu.ttf');
+}
+
+@font-face {
+  font-family: YOzFont;
+  src: url('../fonts/YOzFont.ttf');
+}
+
+@font-face {
+  font-family: Choumei;
+  src: url('../fonts/Choumei.ttf');
+}
+
+/* Layout */
+#container h1 {
+  margin: 0;
+}
+
+#container {
+  padding: 15px 0 0 15px;
+}
+
+/* Settings */
+#settingsBox {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid #000;
+  padding: 0 0 10px 0;
+  margin: 0 0 10px 0;
+}
+
+/*Kanji Selector */
+#sidebar {
+  position: fixed;
+  height: 100%;
+  width: 25%;
+  right: 0;
+  top: 0;
+  padding: 15px;
+  border-left: 1px solid #000;
+  background: rgba(255, 255, 255, 0.8);
+  overflow: scroll;
+}
+
+#sidebar .category-title {
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000;
+}
+
+#sidebar .category-content {
+  height: 0;
+  overflow: hidden;
+}
+
+#sidebar .category-content.expand {
+  height: auto;
+  overflow: auto;
+}
+
+#sidebar .category {
+  margin-bottom: 15px;
+}
+
+#sidebar .subcategory {
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+#sidebar .subcategory-header {
+  margin-top: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000;
+}
+
+#sidebar .subcategory-title {
+  cursor: pointer;
+  display: inline;
+  font-size: 14px;
+}
+
+#sidebar .subcategory-header .select-all {
+  cursor: pointer;
+  font-size: 12px;
+  color: gray;
+}
+
+#sidebar .subcategory-content {
+  padding-left: 10px;
+  height: 0;
+  overflow: hidden;
+}
+
+#sidebar .subcategory-content.expand {
+  height: auto;
+  max-height: 425px;
+  overflow: auto;
+}
+
+#sidebar .kanji-button {
+  cursor: pointer;
+  margin-bottom: 5px;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+}
+
+#sidebar .kanji-button.selected {
+  color: #f00;
+}
+
+
+
+#content .kanji-row {
+  justify-content: space-between;
+  max-width: 7.25in;
+
+}
+
+#content .kanji-term,
+#content .kanji-definition {
+  display: inline-block;
+}
+
+#content .kanji-term {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+#content .kanji-definition {
+  font-size: 14px;
+  margin: 0 30px 0 10px;
+  text-transform: capitalize;
+}
+
+#content .kanji-visuals {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#content .kanji-stroke-order {
+  font-family: StrokeOrder;
+  font-size: calc(1in - 12px);
+  margin-right: 10px;
+}
+#content .kanjiNormal {
+  font-size: calc(1in - 12px);
+  margin-left:10px;
+}
+#content .kanji-box {
+  display: flex;
+  flex-flow: row nowrap;
+
+  margin: 0 5px 5px 0;
+  width: 0.5in;
+  height: 0.5in;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  float: left;
+  text-align: center;
+
+  font-family: Mitimasu;
+  font-size: calc(0.5in - 6px);
+  line-height: calc(0.5in - 1px);
+}
+
+#content .kanji-box img,
+#content .kanji-box div {
+  box-sizing: border-box;
+  width: 100%;
+  flex: none
+}
+
+#content .kanji-box img {
+  visibility: hidden;
+}
+
+#content.guide-lines .kanji-box img {
+  visibility: visible;
+}
+
+#content .kanji-box div {
+  margin-left: -100%;
+}
+
+#content .kanji-box.kanji-hint-box {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.author {
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+  font-size: 12px;
+  z-index: 0;
+  background: #00000000;
+}
+
+.author a {
+  color: #E667AF;
+}
+
+.author a:hover {
+  color: #000;
+}
+
+@media print {
+  .author {
+    display: none;
+  }
+
+  .kanji-row {
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  #content {
+    display: block;
+    width: 7.25in;
+    float: left;
+  }
+
+  #sidebar {
+    display: none;
+  }
+}
+
+
+radical{
+	background-color:#00a1f1;
+	border-radius: 15px;
+    padding: 3px;
+	color: #FFF;
+	font-weight: bold;
+	}
+
+kanji{
+	background-color:#f100a1;
+	border-radius: 15px;
+    padding: 3px;
+	color: #FFF;
+	font-weight: bold;
+
+	}
+
+
+.kanji-meaning-mnemonic {
+  margin-top:15px;
+  text-align:center;
+  width:auto;
+  background-color: rgba(85, 85, 85, 0.2);
+ 
+}
+
+#content .kanji-block {
+  display: flex;
+  background-color: rgba(85, 85, 85, 0.2);
+;
+}
+
+.kanji-description {
+ 
+  text-align:center;
+  background-color: rgba(85, 85, 85, 0.2);
+ 
+}
+
+
+
+
+/* Stroke order diagrams */
+.entry ul {
+	margin: 8px 0px 8px 12px;
+	padding: 0px 0px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #626262;
+	list-style-type: none;
+}
+.entry ol.jp
+, .entry ul.jp {
+	font-size: 14px;
+}
+.entry ul li {
+	padding: 0 0 3px 0;
+}
+.entry ul li:before {
+	content: '\BB';
+	color: #f29222;
+	padding: 0px 8px 0px 0px;
+}
+.entry ul.disc {
+	font-size: 13px;
+	color: black;
+	padding: 0px;
+	margin: 3px 0px 6px 24px;
+	list-style-type: disc;
+}
+.entry ul.disc li:before {
+	content: '';
+	padding: 0px 0px 0px 0px;
+}
+.entry ul.justifyleft {
+	padding: 0px;
+	margin: 3px 5px 6px 15px;
+}
+.entry ul.justifyleft li:before {
+	content: '';
+	padding: 0px;
+}
+.entry ul.horizontal {
+	white-space:nowrap;
+	overflow:auto;
+	list-style:none;
+	margin: 4px 0px 12px 0px;
+	padding: 2px;
+	background-color: white;
+	border-width: 2px 2px 2px 2px;
+	border-color: #e1dfd2;
+	border-style: solid;
+	border-radius: 8px;
+}
+.entry ul.horizontal li.vertical {
+	padding:4px 2px 0px 2px;
+	font-size:14px;
+	font-weight: bold;
+	color: #603913;
+	margin:4px 1px 4px 1px;
+	display: inline-block;
+	vertical-align: top;
+	writing-mode: vertical-rl;
+}
+.entry ul.horizontal li {
+	vertical-align: top;
+	white-space:normal;
+	display: inline-block;
+	padding: 0px;
+	margin: 2px;
+}
+.entry ul.horizontal li:before {
+	content: '';
+	padding: 0px;
+}
+ul.stroke-order li {
+	float:left;
+	margin-right: -3px;
+}
+ul.stroke-order li div {
+	background-repeat: no-repeat;
+	display: block;
+	width: 58em;
+	height: 58em;
+	font-size: 1px;
+}
+
+ul.stroke-order li:before {
+	content: '';
+	padding: 0px 0px 0px 0px;
+}
