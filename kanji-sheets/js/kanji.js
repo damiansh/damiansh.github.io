@@ -153,7 +153,7 @@ var kanji = (function (exports) {
                             categoryContent.classList.add('expand');
                     });
                 }
-                const jlptData = yield (yield fetch('https://damiansh.github.io/kanji-sheets/data/JLPT.json')).json();
+                const jlptData = yield (yield fetch('data/JLPT.json')).json();
                 addKanjiCategory("JLPT", jlptData);
                 // Accounts for the possibility that the inputs are
                 // set to non-default after a page reload.
@@ -287,7 +287,7 @@ var kanji = (function (exports) {
             kanjiStrokeGrid.appendChild(kanjiStrokeOrder);
 
 		//Kanji Mnemonic only if you are using WK
-			var isHidden= document.getElementById('mnemonicsToggle');
+			var mToggle = document.getElementById('mnemonicsToggle');
 			var mnemonic = kanjiData.meaning_mnemonic;
 			if(mnemonic!=null){
 				const kanjiMnemonic = document.createElement('div');
@@ -295,16 +295,20 @@ var kanji = (function (exports) {
 				kanjiMnemonic.classList.add('kanji-meaning-mnemonic');
 				kanjiMnemonic.innerHTML = rGraphics.innerHTML + "<br>" + mnemonic;
 				kanjiRow.appendChild(kanjiMnemonic);
-				if (isHidden.checked == true) {
+				if (mToggle.checked == true) {
 					kanjiMnemonic.style.display = "none";
 				 }				
 			}
 			
 		//console.log(radicalJS);
 		//KanjiDesc
+			var kToggle = document.getElementById('kanjiDescToggle');
             const kanjiDescription = document.createElement('dl');
             kanjiDescription.classList.add('kanji-description');
             kanjiRow.appendChild(kanjiDescription);
+			if (kToggle.checked == true) {
+					kanjiDescription.style.display = "none";
+			}	
             const kanjiTermMeaning = document.createElement('dt');
             kanjiTermMeaning.classList.add('kanji-term');
             kanjiTermMeaning.innerText = 'Meaning:';
@@ -536,13 +540,15 @@ var kanji = (function (exports) {
     return exports;
 
 }({}));
-function toggleMnemonics() {
-  var mnemonics = document.getElementsByClassName("kanji-meaning-mnemonic");
-  for(let i = 0;i<mnemonics.length;i++){
-	  if (mnemonics[i].style.display === "none") {
-		mnemonics[i].style.display = "block";
+
+
+function toggleElement(className) {
+  var toBlock = document.getElementsByClassName(className);
+  for(let i = 0;i<toBlock.length;i++){
+	  if (toBlock[i].style.display === "none") {
+		toBlock[i].style.display = "";
 	  } else {
-		mnemonics[i].style.display = "none";
+		toBlock[i].style.display = "none";
 	  }
   }
 }

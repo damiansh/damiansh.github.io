@@ -7,6 +7,9 @@ body {
 
     px;
 }
+a.print{ text-decoration: none; 
+	color:#000;
+}
 
 @font-face {
   font-family: StrokeOrder;
@@ -158,6 +161,7 @@ body {
 }
 
 #content .kanji-visuals {
+ margin-top:15px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -285,6 +289,10 @@ radical{
   width:auto;
   background-color: rgba(85, 85, 85, 0.2);
  
+}
+
+.entry {
+  margin-top:3px;
 }
 
 #content .kanji-block {

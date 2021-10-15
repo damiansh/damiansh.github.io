@@ -12,6 +12,7 @@
       </header>
 
       <div id="sidebar">
+       <h2 class="category-title"><a class="print" href="javascript:window.print()">Print Kanji</a></h2>
         <div class="category">
           <h2 class="category-title">Settings</h2>
           <div class="category-content expand">
@@ -54,11 +55,14 @@
 			  <option value="12">12</option>
 			  <option value="13">13</option>
             </select>            <br/>
-            <label for="guideLinesToggle">Guide Lines:</label>
-            <input type="checkbox" id="guideLinesToggle" oninput="kanji.Kanji.toggleGuideLines()" />
+            <label  for="guideLinesToggle">Guide Lines:</label>
+            <input checked type="checkbox" id="guideLinesToggle" oninput="kanji.Kanji.toggleGuideLines()" />
             <br/>
             <label for="mnemonicsToggle">Hide Mnemonics:</label>
-            <input  type="checkbox" id="mnemonicsToggle" oninput="toggleMnemonics()" />
+            <input  type="checkbox" id="mnemonicsToggle" oninput="toggleElement('kanji-meaning-mnemonic')" />
+            <br/>
+            <label for="kanjiDescToggle">Hide Kanji Description:</label>
+            <input  type="checkbox" id="kanjiDescToggle" oninput="toggleElement('kanji-description')" />
           </div>
         </div>
         <div class="category">
@@ -74,7 +78,6 @@
             <p>Your API key is not saved or shared.</p>
           </div>
         </div>
-
       </div>
 
       <div id="content">
