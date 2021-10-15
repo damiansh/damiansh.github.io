@@ -251,15 +251,6 @@ body {
   }
 }
 
-
-radical{
-	background-color:#00a1f1;
-	border-radius: 15px;
-    padding: 3px;
-	color: #FFF;
-	font-weight: bold;
-	}
-
 kanji{
 	background-color:#f100a1;
 	border-radius: 15px;
@@ -268,19 +259,25 @@ kanji{
 	padding-bottom: 1px;
 	padding-left: 4px;
 	color: #FFF;
-	font-weight: bold;
 	}	
 radical{
 	background-color:#00a1f1;
-	border-radius: 15px;
+	border-radius: 12px;
     padding-top: 1px;
 	padding-right: 4px;
 	padding-bottom: 1px;
 	padding-left: 4px;
 	color: #FFF;
-	font-weight: 600;
+	}
+.rGraphic{
+	font-size:25px;
 	}
 
+.raimg{
+	-webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+	margin-bottom:-5px;
+	}
 
 .kanji-meaning-mnemonic {
   margin-top:15px;

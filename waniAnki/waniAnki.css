@@ -33,7 +33,26 @@ radical{
 	color: #FFF;
 	font-weight: 600;
 	}
-
+radical2{
+	background-color:#00a1f1;
+	border-radius: 15px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	color: #FFF;
+	font-weight: 500;
+	}	
+kanji{
+	background-color:#f100a1;
+	border-radius: 15px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	color: #FFF;
+	font-weight: 600;
+	}
 .component{
 	background-color:#00a1f1;
 	border-radius: 15px;
@@ -41,7 +60,7 @@ radical{
 	padding-right: 4px;
 	padding-bottom: 1px;
 	padding-left: 4px;
-	font-weight: 600;
+	font-weight: 500;
 	}
 .ralink{
 	background-color:#00a1f1;
@@ -59,16 +78,7 @@ a{
  color:#FFF;
  font-weight: 500;
 }
-kanji{
-	background-color:#f100a1;
-	border-radius: 15px;
-    padding-top: 1px;
-	padding-right: 4px;
-	padding-bottom: 1px;
-	padding-left: 4px;
-	color: #FFF;
-	font-weight: bold;
-	}	
+	
 jlpt{
 	background-color:#b3e6b3;
 	border-radius: 15px;

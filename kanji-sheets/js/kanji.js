@@ -162,14 +162,15 @@ var kanji = (function (exports) {
             });
         }
         Kanji.init = init;
-		var kanjiJS = await kanjiJSON();
-		async function kanjiJSON(){
-			var kanjiJS = "";
-			await $.getJSON("../json/japanese/kanji.json", function(json) {
-				kanjiJS = json;
+		var kanjiJS = await localJSON("kanji");
+		var radicalJS = await localJSON("wkRadicals");
+		async function localJSON(end){
+			var js = "";
+			await $.getJSON("../json/japanese/" + end + ".json", function(json) {
+				js = json;
 			});			
 			//kanjiAPI = await getCode("https://kanjiapi.dev/v1/kanji/" + searchee);	
-			return kanjiJS;
+			return js;
 		}
         function loadWaniKani() {
 			const apiKey = document.getElementById('waniKaniKey').value;
@@ -258,11 +259,12 @@ var kanji = (function (exports) {
             document.getElementById('sidebar').appendChild(crateKanjiSelectionCategory(categoryName, category));
         }
         function createKanjiRow(kanjiId) {
-            const numHintKanjiBoxes = 1;
-            const numEmptyKanjiBoxes = 77;
+			const hBoxes = document.getElementById("hBoxes").value;
+			const kBoxes = (document.getElementById("kBoxes").value*13)-hBoxes;
+            const numHintKanjiBoxes = hBoxes;
+            const numEmptyKanjiBoxes = kBoxes;
             const kanjiRow = document.createElement('div');
             const kanjiData = availableKanji[kanjiId];
-			console.log(kanjiData.component_subject_ids);
             kanjiRow.classList.add('kanji-row');
             kanjiRow.id = `kanji/${kanjiId}`;
 		//Kanji Block
@@ -285,13 +287,20 @@ var kanji = (function (exports) {
             kanjiStrokeGrid.appendChild(kanjiStrokeOrder);
 
 		//Kanji Mnemonic only if you are using WK
+			var isHidden= document.getElementById('mnemonicsToggle');
 			var mnemonic = kanjiData.meaning_mnemonic;
 			if(mnemonic!=null){
 				const kanjiMnemonic = document.createElement('div');
+				var rGraphics = createRadicals(kanjiData.component_subject_ids);
 				kanjiMnemonic.classList.add('kanji-meaning-mnemonic');
-				kanjiMnemonic.innerHTML = mnemonic;
+				kanjiMnemonic.innerHTML = rGraphics.innerHTML + "<br>" + mnemonic;
 				kanjiRow.appendChild(kanjiMnemonic);
+				if (isHidden.checked == true) {
+					kanjiMnemonic.style.display = "none";
+				 }				
 			}
+			
+		//console.log(radicalJS);
 		//KanjiDesc
             const kanjiDescription = document.createElement('dl');
             kanjiDescription.classList.add('kanji-description');
@@ -379,12 +388,12 @@ var kanji = (function (exports) {
 		 * @param {html object} radical - the html element of radicals 
 		 * @param {int} check - A number to check if it is the first radical on the list.
 		 */
-		function createRadicals(){
-			for (let i = 0; i < data.component_subject_ids.length; i++) {
-				if(allRadicals[j].id==data.component_subject_ids[i]){
-						radicalBuilder(allRadicals[j].data,item3,i);
-				}	
+		function createRadicals(rIDs,components){
+			var radical = document.createElement('div');
+			for (let i = 0; i < rIDs.length; i++) {
+				radicalBuilder(radicalJS["wk" + rIDs[i]].data,i,radical);
 			}
+			return radical;
 		}
 		/**
 		 * Method to build the html section of the radicals (item3)
@@ -392,18 +401,18 @@ var kanji = (function (exports) {
 		 * @param {html object} radical - the html element of radicals 
 		 * @param {int} check - A number to check if it is the first radical on the list.
 		 */
-		function radicalBuilder(r,radical,check){
+		function radicalBuilder(r,check,radical){
 			//console.log(radical);
 			//console.log(r);
-			rString = "";
+			var rString = "";
 			if(r.characters!=null){
-				rString = "<a href='" + r.document_url + "'>" + "<radical>" + r.characters + "</radical></a> " + r.meanings[0].meaning;
+				rString = "<span class='rGraphic'>" + "<radical>" + r.characters + "</radical></span> ";
 				
 			}
 			else{
 				for(let i = 0; i < r.character_images.length; i++){
 				 if(r.character_images[i].content_type == "image/png"){
-					rString = "<a href='" + r.document_url + "' " + "class='ralink'><img weight='34' height ='34' class='raimg' src='" + r.character_images[i].url + "'></a> " + r.meanings[0].meaning;
+					rString = "<span class='rGraphic'><radical><img weight='27' height ='27' class='raimg' src='" + r.character_images[i].url + "'></radical></span>";
 				 }
 				}
 			}
@@ -413,7 +422,6 @@ var kanji = (function (exports) {
 			else{
 				radical.innerHTML = radical.innerHTML + " + " + rString;
 			}
-			
 		}
 		function createGrid(rawKanji){
 			const position = -56.5;
@@ -462,30 +470,6 @@ var kanji = (function (exports) {
 		}
 	
 
-		/**
-		 * Method to build the html section of the radicals (item3)
-		 * @param {object} r - the radical data from WaniKani API
-		 * @param {html object} radical - the html element of radicals 
-		 * @param {int} check - A number to check if it is the first radical on the list.
-		 */
-		function createRadical(r,radical,check){
-			//console.log(radical);
-			//console.log(r);
-			rString = "";
-			for(let i = 0; i < r.character_images.length; i++){
-				if(r.character_images[i].content_type == "image/png"){
-				rString = "<a href='" + r.document_url + "' " + "class='ralink'><img weight='34' height ='34' class='raimg' src='" + r.character_images[i].url + "'></a> " + r.meanings[0].meaning;
-				}
-			}
-		
-			if(check==0){
-				radical.innerHTML = rString;
-			}
-			else{
-				radical.innerHTML = radical.innerHTML + " + " + rString;
-			}
-			
-		}
 
         function createKanjiSelectionSubcategory(subcategoryName, subcategory) {
             const kanjiSelectionSubcategory = document.createElement('div');
@@ -552,4 +536,14 @@ var kanji = (function (exports) {
     return exports;
 
 }({}));
+function toggleMnemonics() {
+  var mnemonics = document.getElementsByClassName("kanji-meaning-mnemonic");
+  for(let i = 0;i<mnemonics.length;i++){
+	  if (mnemonics[i].style.display === "none") {
+		mnemonics[i].style.display = "block";
+	  } else {
+		mnemonics[i].style.display = "none";
+	  }
+  }
+}
 //# sourceMappingURL=kanji.js.map

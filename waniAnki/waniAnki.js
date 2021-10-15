@@ -74,8 +74,8 @@ wanikani();
  * @main 
  */
 async function wanikani(){
-	var allRadicals = await jpJSON("wkRadicals");
-	var jsKanji = await jpJSON("kanji");
+	var allRadicals = await localJSON("wkRadicals");
+	var jsKanji = await localJSON("kanji");
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
@@ -92,7 +92,7 @@ async function wanikani(){
 /**
  * This method calls local json files
  */ 
-async function jpJSON(end){
+async function localJSON(end){
 	var js = "";
 	await $.getJSON("https://damiansh.github.io/json/japanese/" + end + ".json", function(json) {
 		js = json;
@@ -279,7 +279,7 @@ function createRadical(r,radical,check){
 	//console.log(r);
 	rString = "";
 	if(r.characters!=null){
-		rString = "<a href='" + r.document_url + "'>" + "<radical>" + r.characters + "</radical></a> " + r.meanings[0].meaning;
+		rString = "<a href='" + r.document_url + "'>" + "<radical2>" + r.characters + "</radical2></a> " + r.meanings[0].meaning;
 		
 	}
 	else{

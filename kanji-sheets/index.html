@@ -14,17 +14,51 @@
       <div id="sidebar">
         <div class="category">
           <h2 class="category-title">Settings</h2>
-          <div class="category-content">
-            <label for="guideLinesToggle">Guide Lines:</label>
-            <input type="checkbox" id="guideLinesToggle" oninput="kanji.Kanji.toggleGuideLines()" />
-            <br/>
+          <div class="category-content expand">
             <label for="fontSelector">Font:</label>
             <select id="fontSelector" oninput="kanji.Kanji.setFont()"">
               <option value="Mitimasu">Mitimasu</option>
               <option value="YOzFont">Y.OzFont</option>
               <option value="Choumei">Choumei</option>
               <option value="StrokeOrder">Stroke Order</option>
-            </select>
+            </select><br>
+            <label for="kBoxes">Rows:</label>
+            <select id="kBoxes">
+              <option value="1">1 row</option>
+			  <option value="2">2 rows</option>
+			  <option value="3">3 rows</option>
+			  <option value="4">4 rows</option>
+			  <option value="5">5 rows</option>
+			  <option selected value="6">6 rows</option>
+			  <option value="7">7 rows</option>
+			  <option value="8">8 rows</option>
+			  <option value="9">9 rows</option>
+			  <option value="10">10 rows</option>
+			  <option value="11">111 rows</option>
+			  <option value="12">12 rows</option>
+			  <option value="13">13 rows</option>
+            </select>            <br/>
+            <label for="hBoxes">Hint Boxes (with strokes):</label>
+            <select id="hBoxes">
+              <option selected value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			  <option value="6">6</option>
+			  <option value="7">7</option>
+			  <option value="8">8</option>
+			  <option value="9">9</option>
+			  <option value="10">10</option>
+			  <option value="11">11</option>
+			  <option value="12">12</option>
+			  <option value="13">13</option>
+            </select>            <br/>
+            <label for="guideLinesToggle">Guide Lines:</label>
+            <input type="checkbox" id="guideLinesToggle" oninput="kanji.Kanji.toggleGuideLines()" />
+            <br/>
+            <label for="mnemonicsToggle">Hide Mnemonics:</label>
+            <input  type="checkbox" id="mnemonicsToggle" oninput="toggleMnemonics()" />
           </div>
         </div>
         <div class="category">
