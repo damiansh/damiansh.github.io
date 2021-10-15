@@ -373,7 +373,12 @@ var kanji = (function (exports) {
             return kanjiSelectionCategory;
         }
 
-
+		/**
+		 * Method to build the html section of the radicals (item3)
+		 * @param {object} radicals - array of Radicals ids
+		 * @param {html object} radical - the html element of radicals 
+		 * @param {int} check - A number to check if it is the first radical on the list.
+		 */
 		function createRadicals(){
 			for (let i = 0; i < data.component_subject_ids.length; i++) {
 				if(allRadicals[j].id==data.component_subject_ids[i]){

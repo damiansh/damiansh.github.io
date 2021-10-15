@@ -94,11 +94,23 @@ async function wanikani(){
  */ 
 async function kanjiJSON(){
 	var kanjiJS = "";
-	await $.getJSON("https://damiansh.github.io/json/japanese/kanji.json", function(json) {
+	await $.getJSON("../json/japanese/kanji.json", function(json) {
 		kanjiJS = json;
 	});			
 	return kanjiJS;
 }
+
+/**
+ * This method calls the local WK json for radicals
+ */ 
+async function radicalJSON(){
+	var rJS = "";
+	await $.getJSON("../json/japanese/wkRadicals.json", function(json) {
+		kanjiJS = json;
+	});			
+	return kanjiJS;
+}
+
 
 /**
  * Method to sort the array returned by WaniKani API using the kanji contained within the vocab
