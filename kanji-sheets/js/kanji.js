@@ -65,8 +65,7 @@ var kanji = (function (exports) {
     (function (WaniKani) {
         function getKanji(apiKey) {
             return __awaiter(this, void 0, void 0, function* () {
-                const level = 60;
-				//yield getLevel(apiKey);
+                const level = yield getLevel(apiKey);
                 const accumulatedKanji = {};
                 let userLevels = '';
                 for (let currentLevel = level; currentLevel > 1; --currentLevel) {
@@ -154,7 +153,7 @@ var kanji = (function (exports) {
                             categoryContent.classList.add('expand');
                     });
                 }
-                const jlptData = yield (yield fetch('data/JLPT.json')).json();
+                const jlptData = yield (yield fetch('https://damiansh.github.io/kanji-sheets/data/JLPT.json')).json();
                 addKanjiCategory("JLPT", jlptData);
                 // Accounts for the possibility that the inputs are
                 // set to non-default after a page reload.
@@ -164,7 +163,6 @@ var kanji = (function (exports) {
         }
         Kanji.init = init;
 		var kanjiJS = await kanjiJSON();
-		loadWaniKani();
 		async function kanjiJSON(){
 			var kanjiJS = "";
 			await $.getJSON("../json/japanese/kanji.json", function(json) {
@@ -174,7 +172,7 @@ var kanji = (function (exports) {
 			return kanjiJS;
 		}
         function loadWaniKani() {
-            const apiKey = "71eda121-0487-47c8-9dea-1e65e9ec1013";
+			const apiKey = document.getElementById('waniKaniKey').value;
             WaniKani.getKanji(apiKey)
                 .then(kanji => addKanjiCategory('WaniKani', kanji), err => {
                 let errorMessage;
@@ -264,6 +262,7 @@ var kanji = (function (exports) {
             const numEmptyKanjiBoxes = 77;
             const kanjiRow = document.createElement('div');
             const kanjiData = availableKanji[kanjiId];
+			console.log(kanjiData.component_subject_ids);
             kanjiRow.classList.add('kanji-row');
             kanjiRow.id = `kanji/${kanjiId}`;
 		//Kanji Block
@@ -373,6 +372,44 @@ var kanji = (function (exports) {
             }
             return kanjiSelectionCategory;
         }
+
+
+		function createRadicals(){
+			for (let i = 0; i < data.component_subject_ids.length; i++) {
+				if(allRadicals[j].id==data.component_subject_ids[i]){
+						radicalBuilder(allRadicals[j].data,item3,i);
+				}	
+			}
+		}
+		/**
+		 * Method to build the html section of the radicals (item3)
+		 * @param {object} r - the radical data from WaniKani API
+		 * @param {html object} radical - the html element of radicals 
+		 * @param {int} check - A number to check if it is the first radical on the list.
+		 */
+		function radicalBuilder(r,radical,check){
+			//console.log(radical);
+			//console.log(r);
+			rString = "";
+			if(r.characters!=null){
+				rString = "<a href='" + r.document_url + "'>" + "<radical>" + r.characters + "</radical></a> " + r.meanings[0].meaning;
+				
+			}
+			else{
+				for(let i = 0; i < r.character_images.length; i++){
+				 if(r.character_images[i].content_type == "image/png"){
+					rString = "<a href='" + r.document_url + "' " + "class='ralink'><img weight='34' height ='34' class='raimg' src='" + r.character_images[i].url + "'></a> " + r.meanings[0].meaning;
+				 }
+				}
+			}
+			if(check==0){
+				radical.innerHTML = rString;
+			}
+			else{
+				radical.innerHTML = radical.innerHTML + " + " + rString;
+			}
+			
+		}
 		function createGrid(rawKanji){
 			const position = -56.5;
 			var kCode = rawKanji.charCodeAt()
@@ -404,7 +441,7 @@ var kanji = (function (exports) {
 		async function getCode(url){
 			var response="";
 			try{
-				await $.get(url,function(data)//Remember, same domain
+				await $.get(url,function(data)
 				{
 					response = data;
 				});
@@ -418,9 +455,32 @@ var kanji = (function (exports) {
 		function findStroke(searchee){
 			return kanjiJS[searchee].stroke_count;
 		}
+	
+
+		/**
+		 * Method to build the html section of the radicals (item3)
+		 * @param {object} r - the radical data from WaniKani API
+		 * @param {html object} radical - the html element of radicals 
+		 * @param {int} check - A number to check if it is the first radical on the list.
+		 */
+		function createRadical(r,radical,check){
+			//console.log(radical);
+			//console.log(r);
+			rString = "";
+			for(let i = 0; i < r.character_images.length; i++){
+				if(r.character_images[i].content_type == "image/png"){
+				rString = "<a href='" + r.document_url + "' " + "class='ralink'><img weight='34' height ='34' class='raimg' src='" + r.character_images[i].url + "'></a> " + r.meanings[0].meaning;
+				}
+			}
 		
-
-
+			if(check==0){
+				radical.innerHTML = rString;
+			}
+			else{
+				radical.innerHTML = radical.innerHTML + " + " + rString;
+			}
+			
+		}
 
         function createKanjiSelectionSubcategory(subcategoryName, subcategory) {
             const kanjiSelectionSubcategory = document.createElement('div');

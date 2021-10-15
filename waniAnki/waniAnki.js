@@ -74,6 +74,7 @@ wanikani();
  * @main 
  */
 async function wanikani(){
+	var allRadicals = await getSubject("subjects?types=radical");
 	var jsKanji = await kanjiJSON();
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
@@ -84,7 +85,7 @@ async function wanikani(){
 	sorted = sortKanji();
 	//console.log(sorted);
 	for(let i = 0; i < sorted.length; i++){
-		await createKanji(sorted[i],jsKanji);
+		await createKanji(sorted[i],jsKanji,allRadicals);
 	}
 }
 
@@ -128,7 +129,7 @@ function sortKanji(){
  * The main method that builds the html for the kanji within Anki
  * @param {object} data - the JSON data recovered from WK. 
  */
-async function createKanji(data,jsKanji){
+async function createKanji(data,jsKanji,allRadicals){
 	//console.log(data);
 	kanjiInfo = document.getElementById('kanjiInfo');
 	const grid = document.createElement('div');
@@ -211,7 +212,6 @@ async function createKanji(data,jsKanji){
 	
 	//item 3 - radicals
 	for (let i = 0; i < data.component_subject_ids.length; i++) {
-		allRadicals = await getSubject("subjects?types=radical");
 		for(let j = 0;j<allRadicals.length;j++){
 			if(allRadicals[j].id==data.component_subject_ids[i]){
 				createRadical(allRadicals[j].data,item3,i);

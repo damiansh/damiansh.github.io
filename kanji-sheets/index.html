@@ -27,13 +27,28 @@
             </select>
           </div>
         </div>
+        <div class="category">
+          <h2 class="category-title">WaniKani Sync</h2>
+          <div class="category-content">
+            <p>
+              Load in your learned kanji from WaniKani to add to your worksheet.
+              Just paste in an API key from your <a href="https://www.wanikani.com/settings/personal_access_tokens" target="_blank">personal access token management page</a>.
+            </p>
+            <label for="waniKaniKey" style="display: block;">WaniKani API Key</label>
+            <input type="text" id="waniKaniKey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" style="width: 75%;" />
+            <input type="submit" value="Sync" onclick="kanji.Kanji.loadWaniKani()" />
+            <p>Your API key is not saved or shared.</p>
+          </div>
+        </div>
 
       </div>
 
       <div id="content">
       </div>
-
-
+    </div>
+  <div id="footer">
+        <span class="author">made by <a target="_blank" href="https://twitter.com/jensechu">jensen</a> with &#9829;, updated by <a target="_blank" href="https://github.com/xelaushi">xelaushi</a>, and modified again by <a target="_blank" href="https://github.com/damiansh">Damshh</a></span>
+      </div>
     </div>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script src="js/kanji.js"></script>

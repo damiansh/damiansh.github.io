@@ -263,10 +263,22 @@ radical{
 kanji{
 	background-color:#f100a1;
 	border-radius: 15px;
-    padding: 3px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
 	color: #FFF;
 	font-weight: bold;
-
+	}	
+radical{
+	background-color:#00a1f1;
+	border-radius: 15px;
+    padding-top: 1px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	color: #FFF;
+	font-weight: 600;
 	}
 
 
