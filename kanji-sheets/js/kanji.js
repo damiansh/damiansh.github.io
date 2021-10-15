@@ -60,12 +60,12 @@ var kanji = (function (exports) {
             step((generator = generator.apply(thisArg, _arguments || [])).next());
         });
     }
-
+	var level = 0;
     var WaniKani;
     (function (WaniKani) {
         function getKanji(apiKey) {
             return __awaiter(this, void 0, void 0, function* () {
-                const level = yield getLevel(apiKey);
+                level = yield getLevel(apiKey);
                 const accumulatedKanji = {};
                 let userLevels = '';
                 for (let currentLevel = level; currentLevel > 1; --currentLevel) {
@@ -163,6 +163,8 @@ var kanji = (function (exports) {
         }
         Kanji.init = init;
 		var kanjiJS = await localJSON("kanji");
+		var stats = new Array(0);
+		var statLength = 0;
 		var radicalJS = await localJSON("wkRadicals");
 		async function localJSON(end){
 			var js = "";
@@ -172,9 +174,16 @@ var kanji = (function (exports) {
 			//kanjiAPI = await getCode("https://kanjiapi.dev/v1/kanji/" + searchee);	
 			return js;
 		}
-        function loadWaniKani() {
+        async function loadWaniKani() {
+			var reviews = await getWK("review_statistics?subject_types=kanji");
+			stats = stats.concat(reviews);
+			while(reviews.length>0){
+				reviews = await getWK("review_statistics?subject_types=kanji&page_after_id=" +reviews[reviews.length-1].id);
+				stats = stats.concat(reviews);
+			}
+			statLength = stats.length
 			const apiKey = document.getElementById('waniKaniKey').value;
-            WaniKani.getKanji(apiKey)
+            await WaniKani.getKanji(apiKey)
                 .then(kanji => addKanjiCategory('WaniKani', kanji), err => {
                 let errorMessage;
                 if (err instanceof WaniKani.WaniKaniError)
@@ -230,7 +239,10 @@ var kanji = (function (exports) {
             (_a = document.getElementById(`kanji/${kanjiId}`)) === null || _a === void 0 ? void 0 : _a.remove();
             document.getElementById(`kanji-button/${kanjiId}`).classList.remove('selected');
         }
-        function addKanjiCategory(categoryName, categoryData) {
+        async function addKanjiCategory(categoryName, categoryData) {
+			if(categoryName == "WaniKani"){
+				categoryData["Leeches"] = await selectLeeches(categoryData);
+            }		
             categories[categoryName] = {};
             const category = categories[categoryName];
             for (const subcategoryName in categoryData) {
@@ -386,6 +398,43 @@ var kanji = (function (exports) {
             return kanjiSelectionCategory;
         }
 
+		async function selectLeeches(categoryData){
+			//console.log(stats);
+			var allLevels = new Array(0);
+			for(let i=1;i<=level;i++){
+				allLevels = Object.assign(allLevels,categoryData["Level " + i]);
+				}
+			var leechIds = ""
+			var match = false; 
+			for(let i=0;i<statLength;i++){
+				var leechS = leechScore(stats[i].data);
+				if(leechS>=1){
+				leechIds = leechIds + "," + stats[i].data.subject_id;
+					if(!match) {
+						leechIds = stats[i].data.subject_id;
+						match=true;
+					}
+				}
+			}
+			var SRS  = await getWK("assignments?subject_ids	=" + leechIds);
+			leechIds = "";
+			match = false;
+			for(let i=0;i<SRS.length;i++){
+				if(SRS[i].data.srs_stage!=9){
+					leechIds = leechIds + "," + SRS[i].data.subject_id;
+					if(!match) {
+						leechIds = SRS[i].data.subject_id;
+						match=true;
+					}
+				}
+			}
+			var leech = await getWK("subjects?ids=" + leechIds);
+			var leechData = new Object();
+			for(let i=0;i<leech.length;i++){
+				leechData[leech[i].data.slug] = allLevels[leech[i].data.slug];
+				}
+			return leechData;
+		}
 		/**
 		 * Method to build the html section of the radicals (item3)
 		 * @param {object} radicals - array of Radicals ids
@@ -473,7 +522,23 @@ var kanji = (function (exports) {
 			return kanjiJS[searchee].stroke_count;
 		}
 	
+	//credits to prouleau for this method to calculate the leechScore from his Item Inspector Userscript
+    function leechScore(item){
+        if (item != undefined){
+            let reviewStats = item;
+            let meaningScore = getLeechScore(reviewStats.meaning_incorrect, reviewStats.meaning_current_streak);
+            let readingScore = getLeechScore(reviewStats.reading_incorrect, reviewStats.reading_current_streak);
 
+            return Math.max(meaningScore, readingScore);
+        } else {return 0};
+    };
+	//credits to prouleau for this method to calculate the leechScore from his Item Inspector Userscript
+    function getLeechScore(incorrect, currentStreak) {
+        //get incorrect number than lessen it using the user's correctStreak
+        let leechScore = incorrect / Math.pow((currentStreak || 0.5), 1.5); // '||' => if currentstreak zero make 0.5 instead (prevents dividing by zero)
+        leechScore = Math.round(leechScore * 100) / 100; //round to two decimals
+        return leechScore;
+    };
 
         function createKanjiSelectionSubcategory(subcategoryName, subcategory) {
             const kanjiSelectionSubcategory = document.createElement('div');
@@ -541,7 +606,22 @@ var kanji = (function (exports) {
 
 }({}));
 
-
+		async function getWK(apiEndpointPath){
+			var apiToken = document.getElementById('waniKaniKey').value;
+			var requestHeaders =
+			  new Headers({
+				Authorization: 'Bearer ' + apiToken,
+			  });
+		 
+			var apiEndpoint =
+			  new Request('https://api.wanikani.com/v2/' + apiEndpointPath, {
+				method: 'GET',
+				headers: requestHeaders
+			  });
+			const response = await fetch(apiEndpoint)
+			json = await response.json();
+			return json.data;
+		}
 function toggleElement(className) {
   var toBlock = document.getElementsByClassName(className);
   for(let i = 0;i<toBlock.length;i++){
