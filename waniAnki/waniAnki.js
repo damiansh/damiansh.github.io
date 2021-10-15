@@ -74,8 +74,8 @@ wanikani();
  * @main 
  */
 async function wanikani(){
-	var allRadicals = await getSubject("subjects?types=radical");
-	var jsKanji = await kanjiJSON();
+	var allRadicals = await jpJSON("wkRadicals");
+	var jsKanji = await jpJSON("kanji");
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
@@ -90,25 +90,14 @@ async function wanikani(){
 }
 
 /**
- * This method calls the json for the KANJI 
+ * This method calls local json files
  */ 
-async function kanjiJSON(){
-	var kanjiJS = "";
-	await $.getJSON("https://damiansh.github.io/json/japanese/kanji.json", function(json) {
-		kanjiJS = json;
+async function jpJSON(end){
+	var js = "";
+	await $.getJSON("https://damiansh.github.io/json/japanese/" + end + ".json", function(json) {
+		js = json;
 	});			
-	return kanjiJS;
-}
-
-/**
- * This method calls the local WK json for radicals
- */ 
-async function radicalJSON(){
-	var rJS = "";
-	await $.getJSON("https://damiansh.github.io/json/japanese/wkRadicals.json", function(json) {
-		kanjiJS = json;
-	});			
-	return kanjiJS;
+	return js;
 }
 
 
@@ -224,11 +213,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	
 	//item 3 - radicals
 	for (let i = 0; i < data.component_subject_ids.length; i++) {
-		for(let j = 0;j<allRadicals.length;j++){
-			if(allRadicals[j].id==data.component_subject_ids[i]){
-				createRadical(allRadicals[j].data,item3,i);
-			}
-		}
+				createRadical(allRadicals["wk" + data.component_subject_ids[i]].data,item3,i);
 	}
 
 	//item 4 - readings
