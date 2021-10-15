@@ -81,6 +81,7 @@ async function wanikani(){
 	k = kanjiArr.join(",");
 	//console.log(k);}
 	kanjiJS = await getSubject("subjects?types=kanji&slugs=" + k);
+	if(kanjiJS==undefined)kanjiJS = new Array(0);
 	if(kanjiJS.length==0) kanjiJS = wkBlank;
 	sorted = sortKanji();
 	//console.log(sorted);
@@ -161,7 +162,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	
 	data.level = "<wk><span title='wk level'>WK" + data.level + "</span></wk>";
 	//This is for NON-WK Kanji
-	if(data.characters === 'NOPE'){
+	if(data.characters === 'NOPE' || apiToken ==""){
 		data.document_url=getURL(data.slug);
 		code = await getCode(data.document_url);
 		kanjiAPI = jsKanji[data.slug];
