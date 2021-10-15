@@ -94,7 +94,7 @@ async function wanikani(){
  */ 
 async function kanjiJSON(){
 	var kanjiJS = "";
-	await $.getJSON("../json/japanese/kanji.json", function(json) {
+	await $.getJSON("https://damiansh.github.io/json/japanese/kanji.json", function(json) {
 		kanjiJS = json;
 	});			
 	return kanjiJS;
@@ -105,7 +105,7 @@ async function kanjiJSON(){
  */ 
 async function radicalJSON(){
 	var rJS = "";
-	await $.getJSON("../json/japanese/wkRadicals.json", function(json) {
+	await $.getJSON("https://damiansh.github.io/json/japanese/wkRadicals.json", function(json) {
 		kanjiJS = json;
 	});			
 	return kanjiJS;
