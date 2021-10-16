@@ -400,9 +400,7 @@ function getRadicals(code,kanjiIn){
 			//console.log(links[i]);
 		}
 		var imgs = rHTML.getElementsByTagName("img");
-		var oIMG;
-		console.log(imgs);
-		
+		var oIMG;		
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].parentNode.classList.remove('component');
 			imgs[i].classList.add('ralink');
