@@ -162,7 +162,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	
 	data.level = "<wk><span title='wk level'>WK" + data.level + "</span></wk>";
 	//This is for NON-WK Kanji
-	if(data.characters === 'NOPE' || apiToken ==""){
+	if(data.characters === 'NOPE'){
 		data.document_url=getURL(data.slug);
 		code = await getCode(data.document_url);
 		kanjiAPI = jsKanji[data.slug];
