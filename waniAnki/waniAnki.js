@@ -391,13 +391,11 @@ function getRadicals(code,kanjiIn){
 		var dom = new DOMParser ();
 		var rHTML   = dom.parseFromString (radicals[1], "text/html");
 		links = rHTML.getElementsByTagName("a");
+		var olink;
 		//console.log(links);
 		for(let i=0;i<links.length;i++){
-			olink = links[i].href;
-			olink = olink.split('/');
-			olink = olink[olink.length-1];
-			links[i].href="https://www.kanjidamage.com/kanji/" + olink;
-			//console.log(links[i]);
+			olink = links[i].outerHTML;
+			links[i].outerHTML = olink.replace('href="','href="https://www.kanjidamage.com/kanji/');
 		}
 		var imgs = rHTML.getElementsByTagName("img");
 		var oIMG;		
