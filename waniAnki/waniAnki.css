@@ -3,7 +3,7 @@
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, 0%);
-    max-width: 600px;
+    max-width: 800px;
 	}
 	
 .item1 { grid-area: header;font-size: 30px; } /*item 1 - meaning */ 
