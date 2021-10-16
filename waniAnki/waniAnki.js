@@ -401,7 +401,8 @@ function getRadicals(code,kanjiIn){
 			links[i].href="https://www.kanjidamage.com/kanji/" + olink;
 			//console.log(links[i]);
 		}
-		imgs = rHTML.getElementsByTagName("img");
+		var imgs = rHTML.getElementsByTagName("img");
+		console.log(imgs);
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].classList.add('ralink');
 			imgs[i].setAttribute("width", "45");
