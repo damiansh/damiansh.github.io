@@ -76,7 +76,13 @@
             <input type="text" id="waniKaniKey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" style="width: 75%;" />
             <input type="submit" value="Sync" onclick="kanji.Kanji.loadWaniKani()" />
             <p>Your API key is not saved or shared.</p>
+			<label for="leechT"><strong>Leech score:</strong></label>
+			<input type="range" step="0.1" value="1" min="0.1" max="10" id="leechT" oninput="this.nextElementSibling.value = this.value">
+			<output>1</output>
+            <p>By default "1" is the leech score used.</p>
+			<p>Lower numbers will lower the criteria for leeches and higher numbers will increase it.</p>
           </div>
+		  
         </div>
       </div>
 

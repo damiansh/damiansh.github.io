@@ -408,7 +408,7 @@ var kanji = (function (exports) {
 			var match = false; 
 			for(let i=0;i<statLength;i++){
 				var leechS = leechScore(stats[i].data);
-				if(leechS>=1){
+				if(leechS>=document.getElementById("leechT").value){
 				leechIds = leechIds + "," + stats[i].data.subject_id;
 					if(!match) {
 						leechIds = stats[i].data.subject_id;
