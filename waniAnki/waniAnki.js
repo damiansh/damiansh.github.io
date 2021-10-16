@@ -404,8 +404,8 @@ function getRadicals(code,kanjiIn){
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].parentNode.classList.remove('component');
 			imgs[i].classList.add('ralink');
-			imgs[i].setAttribute("width", "34");
-			imgs[i].setAttribute("height", "34");
+			imgs[i].setAttribute("width", "40");
+			imgs[i].setAttribute("height", "40");
 			oIMG = imgs[i].outerHTML;
 			imgs[i].outerHTML = oIMG.replace("../assets/radsmall/", "https://damiansh.github.io/waniAnki/assets/radsmall/");
 		}
