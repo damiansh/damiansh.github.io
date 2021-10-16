@@ -403,17 +403,16 @@ function getRadicals(code,kanjiIn){
 		}
 		var imgs = rHTML.getElementsByTagName("img");
 		var oIMG;
-		console.log(imgs);
 		
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].classList.add('ralink');
 			imgs[i].setAttribute("width", "45");
 			imgs[i].setAttribute("height", "45");
-			oIMG = imgs[i].src;
+			oIMG = imgs[i].outerHTML;
+			imgs[i].outerHTML = oIMG.replace("../assets/radsmall/", "https://damiansh.github.io/waniAnki/assets/radsmall/");
 			//console.log(oIMG);
-			console.log(oIMG);
-			oIMG = oIMG.split('/');
-			console.log(oIMG);
+			
+			//oIMG = oIMG.split('/');
 			//oIMG = oIMG[oIMG.length-1];
 			//imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
 			//console.log(links[i]);
