@@ -408,7 +408,9 @@ function getRadicals(code,kanjiIn){
 			imgs[i].setAttribute("height", "45");
 			oIMG = imgs[i].src;
 			//console.log(oIMG);
+			console.log(oIMG);
 			oIMG = oIMG.split('/');
+			console.log(oIMG);
 			oIMG = oIMG[oIMG.length-1];
 			imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
 			//console.log(links[i]);
