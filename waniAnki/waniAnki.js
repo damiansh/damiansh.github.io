@@ -402,8 +402,9 @@ function getRadicals(code,kanjiIn){
 			//console.log(links[i]);
 		}
 		var imgs = rHTML.getElementsByTagName("img");
+		var oIMG;
 		console.log(imgs);
-		/*
+		
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].classList.add('ralink');
 			imgs[i].setAttribute("width", "45");
@@ -413,10 +414,10 @@ function getRadicals(code,kanjiIn){
 			console.log(oIMG);
 			oIMG = oIMG.split('/');
 			console.log(oIMG);
-			oIMG = oIMG[oIMG.length-1];
-			imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
+			//oIMG = oIMG[oIMG.length-1];
+			//imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
 			//console.log(links[i]);
-		}*/
+		}
 		return rHTML.body.innerHTML; //return second result.
     }
 	
