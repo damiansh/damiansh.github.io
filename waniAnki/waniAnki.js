@@ -403,6 +403,7 @@ function getRadicals(code,kanjiIn){
 		}
 		var imgs = rHTML.getElementsByTagName("img");
 		console.log(imgs);
+		/*
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].classList.add('ralink');
 			imgs[i].setAttribute("width", "45");
@@ -415,7 +416,7 @@ function getRadicals(code,kanjiIn){
 			oIMG = oIMG[oIMG.length-1];
 			imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
 			//console.log(links[i]);
-		}
+		}*/
 		return rHTML.body.innerHTML; //return second result.
     }
 	
