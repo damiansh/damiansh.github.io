@@ -1,3 +1,8 @@
+.kanjiInfo{
+	display: block;
+    max-width: 600px;
+	}
+	
 .item1 { grid-area: header;font-size: 30px; } /*item 1 - meaning */ 
 .item2 { grid-area: menu; font-size:50px; } /*item 2 - slug*/ 
 .item3 { grid-area: main; font-size: 30px;} /*item 3 - radicals*/ 

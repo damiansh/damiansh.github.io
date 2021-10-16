@@ -67,6 +67,7 @@ wkBlank = {
 
 wanikani();
 
+kanjiInfo = document.getElementById('kanjiInfo');
 
 
 /**
@@ -76,6 +77,7 @@ wanikani();
 async function wanikani(){
 	var allRadicals = await localJSON("wkRadicals");
 	var jsKanji = await localJSON("kanji");
+	kanjiInfo.classList.add("kanjiInfo");
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
@@ -133,7 +135,6 @@ function sortKanji(){
  */
 async function createKanji(data,jsKanji,allRadicals){
 	//console.log(data);
-	kanjiInfo = document.getElementById('kanjiInfo');
 	const grid = document.createElement('div');
 	grid.classList.add('grid-container');
 	//divs for items
