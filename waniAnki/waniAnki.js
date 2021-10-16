@@ -362,15 +362,13 @@ function getMnemonic(code){
     {  
 		var dom = new DOMParser ();
 		var mHTML   = dom.parseFromString (mnemonic[1], "text/html");
-		imgs = mHTML.getElementsByTagName("img");
+		var imgs = mHTML.getElementsByTagName("img");
+		var oIMG;
 		for(let i=0;i<imgs.length;i++){
 			imgs[i].setAttribute("width", "80");
 			imgs[i].setAttribute("height", "80");
-			oIMG = imgs[i].src;
-			//console.log(oIMG);
-			oIMG = oIMG.split('/');
-			oIMG = oIMG[oIMG.length-1];
-			imgs[i].src="https://damiansh.github.io/waniAnki/visualaids/" + oIMG;
+			oIMG = imgs[i].outerHTML;
+			imgs[i].outerHTML = oIMG.replace("../visualaids/", "https://damiansh.github.io/waniAnki/visualaids/");
 			//console.log(links[i]);
 		}
 		return mHTML.body.innerHTML; //return second result.
@@ -403,20 +401,17 @@ function getRadicals(code,kanjiIn){
 		}
 		var imgs = rHTML.getElementsByTagName("img");
 		var oIMG;
+		console.log(imgs);
 		
 		for(let i=0;i<imgs.length;i++){
+			imgs[i].parentNode.classList.remove('component');
 			imgs[i].classList.add('ralink');
-			imgs[i].setAttribute("width", "45");
-			imgs[i].setAttribute("height", "45");
+			imgs[i].setAttribute("width", "34");
+			imgs[i].setAttribute("height", "34");
 			oIMG = imgs[i].outerHTML;
 			imgs[i].outerHTML = oIMG.replace("../assets/radsmall/", "https://damiansh.github.io/waniAnki/assets/radsmall/");
-			//console.log(oIMG);
-			
-			//oIMG = oIMG.split('/');
-			//oIMG = oIMG[oIMG.length-1];
-			//imgs[i].src="https://damiansh.github.io/waniAnki/assets/radsmall/" + oIMG;
-			//console.log(links[i]);
 		}
+		
 		return rHTML.body.innerHTML; //return second result.
     }
 	
