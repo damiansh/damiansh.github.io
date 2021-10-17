@@ -68,6 +68,8 @@ wkBlank = {
 wanikani();
 
 kanjiInfo = document.getElementById('kanjiInfo');
+kanjiInfo.classList.add("kanjiInfo");
+kanjiInfo.setAttribute("lang", "ja-jp");
 
 
 /**
@@ -77,7 +79,6 @@ kanjiInfo = document.getElementById('kanjiInfo');
 async function wanikani(){
 	var allRadicals = await localJSON("wkRadicals");
 	var jsKanji = await localJSON("kanji");
-	kanjiInfo.classList.add("kanjiInfo");
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
