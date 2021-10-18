@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kanji Breakdown on Anki - WaniAnki</title>
+  </head>
+ <body>
+<form>
+  <label for="word">Vocab:</label><br>
+  <input type="text" id="word" name="Vocabulary" value=""><br>
+  <input type="button" onclick="wanikani()"value="Submit">
+</form> 
+
+<div id="kanjiInfo"></div>
+<script>
+
+var apiToken = '7a160b5f-d452-470f-b825-72d0936615c9-';
+var kanji = document.getElementById("word").value;
+</script>
+<script type="text/javascript" src="https://damiansh.github.io/js/jquery.min.js"></script>
+<script src="https://damiansh.github.io/waniAnki/waniAnki.js"></script>
+<link rel="stylesheet" href="https://damiansh.github.io/waniAnki/waniAnki.css">
+&lt;div id="kanjiInfo"&gt;&lt;/div&gt;<br>
+&lt;script&gt;<br>
+var apiToken = '7a160b5f-d452-470f-b825-72d0936615c9-';<br>
+var kanji = document.getElementById("word").textContent;<br>
+&lt;/script&gt;<br>
+&lt;script type="text/javascript" src="https://damiansh.github.io/js/jquery.min.js"&gt;&lt;/script&gt;<br>
+&lt;script src="https://damiansh.github.io/waniAnki/waniAnki.js"&gt;&lt;/script&gt;<br>
+&lt;link rel="stylesheet" href="https://damiansh.github.io/waniAnki/waniAnki.css"&gt;<br>
+</body>
+</html>

@@ -65,8 +65,6 @@ wkBlank = {
     "meaning_mnemonic": "",
 };
 
-wanikani();
-
 kanjiInfo = document.getElementById('kanjiInfo');
 kanjiInfo.classList.add("kanjiInfo");
 kanjiInfo.setAttribute("lang", "ja-jp");
@@ -76,7 +74,7 @@ kanjiInfo.setAttribute("lang", "ja-jp");
  * This method starts the process by getting the kanji information from WaniKani API. 
  * @main 
  */
-async function wanikani(){
+async function kanjiBreakdown(){
 	var allRadicals = await localJSON("wkRadicals");
 	var jsKanji = await localJSON("kanji");
 	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ー])/g, '');
