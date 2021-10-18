@@ -64,10 +64,10 @@ wkBlank = {
 
     "meaning_mnemonic": "",
 };
-
 kanjiInfo = document.getElementById('kanjiInfo');
 kanjiInfo.classList.add("kanjiInfo");
 kanjiInfo.setAttribute("lang", "ja-jp");
+kanjiBreakdown();
 
 
 /**
