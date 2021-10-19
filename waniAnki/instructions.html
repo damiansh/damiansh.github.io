@@ -99,12 +99,14 @@ var kanji = document.getElementById("word").textContent;<br>
 </div>
 <div class="content" id="live">
 <h1>Live test</h1>
-<p>This is your a little live test to show you how it would work. On your Anki card this process is automatic, but here try typing some kanji on the word box.It shouldn't only work with kanji characters, so even if the word is has hiragana or katakana, it will only display the kanji.</p>
+<p>This is your a little live test to show you how it would work. On your Anki card this process is automatic, but here try typing some kanji on the word box.</p>
 
-<p>You can leave the API as it is to see how it works without WaniKani or you can paste your WK Api to see how it works with it.</p>
-<center><label for="waniKey" style="display: block;">WaniKani API Key</label>
+<p>It shouldn't only work with kanji characters, so even if the word is has hiragana or katakana, it will only display the kanji.</p>
+
+<p>You can leave the API as it is to see how it works without WaniKani or you can paste your WK API to see how it works with it.</p>
+<center><label for="waniKey" style="display: block;"><strong>WaniKani API Key</strong></label>
 <input type="text" id="waniKey" value="YOU CAN LEAVE THIS AS IT IS OR ADD YOUR WANIKANI API KEY" style="width: 55%;" />
-<label for="word" style="display: block;">Word</label>
+<label for="word" style="display: block;"><strong>Word</strong></label>
 <input type="text" id="word" placeholder="Type your kanji or word here" style="width: 55%;" />
 <br><br>
 <input type="submit" value="Test Kanji Breakdown!" onclick="example();" /> 
