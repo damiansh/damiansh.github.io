@@ -3,21 +3,146 @@
   <head>
     <meta charset="utf-8" />
     <title>Kanji Breakdown on Anki - WaniAnki</title>
-  </head>
- <body>
-<form>
-  <label for="word">Vocab:</label><br>
-  <input type="text" id="word" name="Vocabulary" value=""><br>
-  <input type="button" onclick="wanikani()"value="Submit">
-</form> 
 
+  </head>
+ <body lang="ja-jp">
+<div id="navbar">
+  <a href="#intro"class="active" href="javascript:void(0)">Introduction</a>
+  <a href="#examples">Examples</a>
+  <a href="#install">Installation</a>
+  <a href="#live">Live Test</a>
+
+</div>
+<div  class="content" id="intro">
+<h1>Introduction</h1>
+<p>This is a JavaScript I coded to work with Anki. It is basically something extra you can add to any of your vocabulary card types. It works by getting the vocab word from the back of your card by adding an html tag or an ID to the html tag surrounding your {{Word/Vocabulary}} on the back of your card type with an ID matching the one in the code I am going to provide.</p>
+
+<strong>The information is the following:</strong>
+<ul>
+  <li>Kanji meaning (from WK or Jisho)</li>
+  <li>Kanji radicals/components (from WK or KanjiDamage)</li>
+  <li>Kanji readings (from WK or Jisho)</li>
+   <li>Kanji mnemonic (from WK or KanjiDamage)</li>
+</ul>  
+
+<p>The information is from <strong>WaniKani</strong>, <strong>KanjiDamage</strong>, and from the <a class="linku" target="_blank" href="https://kanjiapi.dev">https://kanjiapi.dev</a> which if I am not mistaken uses <strong>Jisho</strong> as source.</p>
+
+<p>If you do not add a <strong>WaniKani</strong> API key to the code, then it would by default use <strong>KanjiDamage</strong> for the mnemonics and radicals if available, while the other information is going to be from <strong>Jisho.org</strong> </p>
+<h2>KanjiDamage/Jisho example</h2>
+
+<img src="https://i.imgur.com/Vy0rvl3.png"><br>
+
+<p>If you add a <strong>WK API key</strong> then it would use <strong>WaniKani</strong> its primary source to fill the box, and if the kanji is not available on <strong>WaniKani</strong> it would try with <strong>KanjiDamage</strong>  and <strong>Jisho.org</strong>. </p>
+<h2>WankiKani example</h2>
+<img src="https://i.imgur.com/klnArlV.png"><br>
+</div>
+
+<div class="content" id="examples">
+<h1>Examples</h1>
+<iframe width="760" height="515" src="https://www.youtube.com/embed/ghzTrBWIdE4" title="YouTube video player" frameborder="3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br><br><img  width="900" src="https://i.imgur.com/riiNznJ.png">
+</div>
+<div class="content" id="install">
+<h1>Installation</h1>
+<p>To install or add the script to your card type is simple.</p>
+
+<p>Start by copyng and pasting the following code on the <strong>back template</strong> of your card type. Be careful to not delete any code you already have there, this is an addition, you do not need to replace anything! 
+<h2>Code:</h2>
+ <code class="prettyprint" >
+&lt;script&gt;<br>
+var apiToken = "YOU CAN LEAVE THIS AS IT IS OR ADD YOUR WANIKANI API KEY";<br>
+var kanji = document.getElementById("word").textContent;<br>
+&lt;/script&gt;<br>
 &lt;div id="kanjiInfo"&gt;&lt;/div&gt;<br>
 &lt;script type="text/javascript" src="https://damiansh.github.io/js/jquery.min.js"&gt;&lt;/script&gt;<br>
 &lt;script src="https://damiansh.github.io/waniAnki/waniAnki.js"&gt;&lt;/script&gt;<br>
 &lt;link rel="stylesheet" href="https://damiansh.github.io/waniAnki/waniAnki.css"&gt;<br>
+</code>
+<p>I would recommend that you place after the last element on your back template.</p>
+<h3>Example:</h3>
+<code class="prettyprint">
+&lt;div class="image"&gt;{{Image}}&lt;/div&gt; <br>
+&lt;p id="sentence"&gt;{{Sentence}}&lt;/p&gt; <br>
+&lt;p id="reading"&gt;{{Reading}}&lt;/p&gt; <br>
+&lt;span&gt;{{Word}}&lt;/span&gt; <br>
+{{Audio}} <br>
+&lt;p&gt;{{Meaning}&lt;/p&gt; <br>
+</code>
+
+<p>Imagine that's your back template. As you see here <strong>{{Word}}</strong> is the vocab on the card, it is what we want the script to find. On your anki card type it may have a different name depending on how it is designed, but you probably can figure out which one is by the name alone or by the preview Anki offers of the template.</p>
+
+<p>So, we would past then our script after the meaning. We can see that <strong>{{Word}}</strong> is inside an <strong>&lt;span&gt;</strong> html tag.</p>
+<p>If you take attention to the code provided you can see that there is the following line: </p><code class="prettyprint" >document.getElementById("word").textContent</code> 
+<p>Basically, the code is finding the an html tag with the <strong>"word"</strong> id, so you would have to add the same id to the <strong>span</strong> where  <strong>{{Word}}</strong> is.</p>
+<h3>Example:</h3>
+
+<code class="prettyprint">
+&lt;div class="image"&gt;{{Image}}&lt;/div&gt; <br>
+&lt;p id="sentence"&gt;{{Sentence}}&lt;/p&gt; <br>
+&lt;p id="reading"&gt;{{Reading}}&lt;/p&gt; <br>
+&lt;span id="word" &gt;{{Word}}&lt;/span&gt; <br>
+{{Audio}} <br>
+&lt;p&gt;{{Meaning}}&lt;/p&gt; <br>
 &lt;script&gt;<br>
-var apiToken = '7a160b5f-d452-470f-b825-72d0936615c9-';<br>
+var apiToken = "YOU CAN LEAVE THIS AS IT IS OR ADD YOUR WANIKANI API KEY";<br>
 var kanji = document.getElementById("word").textContent;<br>
 &lt;/script&gt;<br>
+&lt;div id="kanjiInfo"&gt;&lt;/div&gt;<br>
+&lt;script type="text/javascript" src="https://damiansh.github.io/js/jquery.min.js"&gt;&lt;/script&gt;<br>
+&lt;script src="https://damiansh.github.io/waniAnki/waniAnki.js"&gt;&lt;/script&gt;<br>
+&lt;link rel="stylesheet" href="https://damiansh.github.io/waniAnki/waniAnki.css"&gt;<br>
+</code>
+<p>Basically, add the code, see where the field you want to pass to the script is, and make it so it has an html element with an id matching the <strong>document.getElementById</strong> line on the code provided, and that's it</p>
+
+<p>If you got any questions or there is an issue with the script, let me know on my Discord: <strong>Damian#0623</strong>
+ 
+</div>
+<div class="content" id="live">
+<h1>Live test</h1>
+<p>This is your a little live test to show you how it would work. On your Anki card this process is automatic, but here try typing some kanji on the word box.</p>
+
+<p>You can leave the API as it is to see how it works without WaniKani or you can paste your WK Api to see how it works with it.</p>
+<center><label for="waniKey" style="display: block;">WaniKani API Key</label>
+<input type="text" id="waniKey" value="YOU CAN LEAVE THIS AS IT IS OR ADD YOUR WANIKANI API KEY" style="width: 55%;" />
+<label for="word" style="display: block;">Word</label>
+<input type="text" id="word" placeholder="Type your kanji or word here" style="width: 55%;" />
+<br><br>
+<input type="submit" value="Test Kanji Breakdown!" onclick="example();" /> 
+<input type="submit" value="Clear" onclick="clearHTML();" /><br></center>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script>
+var kanji;
+var apiToken = "YOU CAN LEAVE THIS AS IT IS OR ADD YOUR WANIKANI API KEY";
+function example(){
+	apiToken = document.getElementById("waniKey").value;
+	kanji = document.getElementById("word").value;
+	kanjiBreakdown();
+}
+function clearHTML(){
+	console.log("clear");
+	document.getElementById("kanjiInfo").innerHTML ="";
+}
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script><br>
+<div id="kanjiInfo"></div>
+<script type="text/javascript" src="https://damiansh.github.io/js/jquery.min.js"></script>
+<script src="waniAnki.js"></script>
+<link rel="stylesheet" href="https://damiansh.github.io/waniAnki/waniAnki.css">
+<link rel="stylesheet" href="instructions.css">
+
 </body>
 </html>

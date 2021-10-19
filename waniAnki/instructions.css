@@ -1,0 +1,104 @@
+
+
+body{
+background-color:#000;
+color:#FFF;
+ font-family: Arial, Helvetica, sans-serif;
+
+}
+
+a.linku{
+	color:blue;
+	font-weight:bold;
+}
+h1{
+ text-align:center;
+}
+h2{
+ text-align:center;
+}
+
+h3{
+ text-align:center;
+}
+div.content{
+display:block;
+margin: auto;
+max-width: 800px;
+}
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+code{
+display:block;
+background-color:#FFF;
+margin: auto;
+max-width: 800px;
+border-radius: 25px;
+border: 4px solid #FF0000;
+padding: 20px; 
+}
+
+#rcorners2 {
+ 
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
