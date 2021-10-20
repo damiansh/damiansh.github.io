@@ -77,8 +77,7 @@ kanjiBreakdown();
 async function kanjiBreakdown(){
 	var allRadicals = await localJSON("wkRadicals");
 	var jsKanji = await localJSON("kanji");
-	kanji = kanji.replace(/([ぁ-ゔゞァ-・ヽヾ゛゜ーa-zA-Z0-9_「」])/g, '');
-	kanji = kanji.replace(/\s/g, '');
+	kanji = kanji.replace(/([ぁ-ゟ]+|[゠-ヿ]+|[!-~]+|[々〆〤「」]+|[！-￮]+|[\s*])/g, '');
 	kanjiArr = kanji.split("");
 	k = kanjiArr.join(",");
 	//console.log(k);}
