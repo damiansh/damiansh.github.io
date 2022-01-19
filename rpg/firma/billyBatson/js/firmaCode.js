@@ -151,7 +151,7 @@ function rand( lowest, highest){
 //Create statTip
 	const statsTip = document.createElement('span');
 	statsTip.classList.add('statsTip');
-	statsTip.innerHTML = "<a title='Cronología'  href='https://heroiclegacy.foroactivo.com/u10' target='_blank'><ruby><rb>" + pjName + "</rb><rp>（</rp><rt></rt><rp>）</rp></ruby></a>";
+	statsTip.innerHTML = "<a   href='https://heroiclegacy.foroactivo.com/u10' target='_blank'><ruby><rb>" + pjName + "</rb><rp>（</rp><rt></rt><rp>）</rp></ruby></a>";
 	sigBottom.appendChild(statsTip);
 	
 /* Stat's pop up
