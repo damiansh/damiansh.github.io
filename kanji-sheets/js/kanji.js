@@ -420,7 +420,7 @@ var kanji = (function (exports) {
 			leechIds = "";
 			match = false;
 			for(let i=0;i<SRS.length;i++){
-				if(SRS[i].data.srs_stage!=9){
+				if(SRS[i].data.srs_stage!=10){ //for the SRS stage include or exclude burned items
 					leechIds = leechIds + "," + SRS[i].data.subject_id;
 					if(!match) {
 						leechIds = SRS[i].data.subject_id;
