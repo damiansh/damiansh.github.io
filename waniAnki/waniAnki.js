@@ -138,6 +138,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	grid.classList.add('grid-container');
 	//divs for items
 	const item1 = document.createElement('div');
+	const kanjiGrid = document.createElement('div');
 	const item2 = document.createElement('div');
 	const item3 = document.createElement('div');
 	const item4 = document.createElement('div');
@@ -145,6 +146,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	
 	//class for items
 	item1.classList.add('item1');
+	kanjiGrid.classList.add('entry');
 	item2.classList.add('item2');
 	item3.classList.add('item3');
 	item4.classList.add('item4');
@@ -209,6 +211,29 @@ async function createKanji(data,jsKanji,allRadicals){
 			}
 	}
 	item1.innerHTML = "<a href='" + data.document_url + "'>" + meaning +  "</a> " + data.level;
+	
+	
+	//kanjiGrid
+	const kanjiStrokeOrder = document.createElement('ul');
+	rawKanji = data.slug;
+	kanjiINFO = jsKanji[rawKanji];
+	kanjiStrokeOrder.classList.add('stroke-order');
+			const position = -56.5;
+			var kCode = rawKanji.charCodeAt()
+			var strokeCount = 0;
+			if(kanjiINFO!=null){
+				strokeCount = kanjiINFO.stroke_count;
+			}
+			//if(strokeCount==null) strokeCount = findStroke2(kCode);
+			var code = ""
+			var style = "style='background-image: url(https://damiansh.github.io/kanji-sheets/strokes/" + kCode + ".png);background-position:";
+			var clase = "class='strokeBox' ";
+			
+			for(let i=0;i<strokeCount;i++){
+				code = code + "<li><div " + clase + style + (position*(i+1)) + "em 0em;'</div></li>";
+			}
+	kanjiStrokeOrder.innerHTML = code;
+	kanjiGrid.appendChild(kanjiStrokeOrder);
 	//item 2 - slug
 	item2.innerHTML = "<a href='" + data.document_url + "'><slug>" +  data.slug + "</slug></a>"
 	
@@ -256,6 +281,7 @@ async function createKanji(data,jsKanji,allRadicals){
 	item5.innerHTML = data.meaning_mnemonic;
 	//append to grid
 	grid.appendChild(item1);
+	grid.appendChild(kanjiGrid);
 	grid.appendChild(item2);
 	grid.appendChild(item3);
 	grid.appendChild(item4);
