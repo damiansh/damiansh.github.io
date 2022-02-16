@@ -17,7 +17,7 @@ background-color:var(--borders);
 
 .audiojs {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, var(--borders)), color-stop(0.5, var(--borders)), color-stop(0.51, var(--borders)), color-stop(1, var(--borders)));
-width: 500px;
+width: 551px;
 	
 }
 .audiojs .loaded{
@@ -30,7 +30,7 @@ width: 500px;
 }
 .pjText
 {
-width:488px;
+width:540px;
 color:#f1f1f1;
 text-shadow:1px 1px 1px #000,2px 2px 2px #000;
 font-size:18px;
@@ -39,7 +39,7 @@ font-family: 'Ropa Sans', sans-serif;
 
 .pjQUOTE
 {
-width:495px;
+width:545px;
 background-color:var(--borders);
 display: inline-block;
 text-align:center;

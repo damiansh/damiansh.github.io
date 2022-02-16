@@ -39,58 +39,58 @@ var pjIMG =[
 		//1 "It's okay, Superman, I got your signal. It's going to be okay.",
 
 		  [
-		  'pj-media/gifs/marvel1.png'
+		  'pj-media/gifs/shero1.png'
 		  ],
 		//2"Boy-o boy, there's nothing like the feel of the wind in your hair, cruising at mach speed."
 		  [
-		  'pj-media/gifs/marvel2.png'
+		  'pj-media/gifs/shero2.png'
 		  ],
 		//3"Forget your worries, your pressures...Forget you're late for school!"
 		  [
-		  'pj-media/gifs/billy1.gif'
+		  'pj-media/gifs/shero1.gif'
 		  ],
 		 //4"It's silly worrying over things I have no control over"
 		  [
-		  'pj-media/gifs/marvel5.png',
-		   'pj-media/gifs/billy4.png'
+		  'pj-media/gifs/shero5.png',
+		   'pj-media/gifs/shero4.png'
 		  ],
 		 //5"When in doubt-- punch it out! That's my new motto!"
 		  [
-		  'pj-media/gifs/marvel6.gif'
+		  'pj-media/gifs/shero6.gif'
 		  ],
 		 //6"Don't worry, I like to smile!"
 		  [
-		  'pj-media/gifs/marvel4.png',
-		  'pj-media/gifs/marvel5.png',
-		  'pj-media/gifs/billy3.gif'
+		  'pj-media/gifs/shero4.png',
+		  'pj-media/gifs/shero5.png',
+		  'pj-media/gifs/shero3.gif'
 		  
 		  ],
 		 //7"Okay. I'm done being nice. All done."	
 		  [
-		  'pj-media/gifs/marvel3.png',
-		  'pj-media/gifs/marvel7.gif',
-		  'pj-media/gifs/marvel8.gif'
+		  'pj-media/gifs/shero3.png',
+		  'pj-media/gifs/shero7.gif',
+		  'pj-media/gifs/shero8.gif'
 		  ],
 		 //8"Brother, you are messing with the wrong god-power-wielding dude"
 		  [
-		  'pj-media/gifs/marvel6.gif',
-		  'pj-media/gifs/marvel8.gif'
+		  'pj-media/gifs/shero6.gif',
+		  'pj-media/gifs/shero8.gif'
 		  ],
-		 //9"Captain Marvel may have the courage of Achilles, but Billy Batson... has the courage of Billy Batson",
+		 //9"Captain shero may have the courage of Achilles, but shero Batson... has the courage of shero Batson",
 		  [
-		  'pj-media/gifs/billy2.gif',
+		  'pj-media/gifs/shero2.gif',
 		  ],
-		 //10"If he won't talk to Captain Marvel, maybe he'll open up to someone his own age"
+		 //10"If he won't talk to Captain shero, maybe he'll open up to someone his own age"
 		  [
-		  'pj-media/gifs/billy5.png',
+		  'pj-media/gifs/shero5.png',
 		  ],
-		 //11"There are times when all of Marvel's powers cannot help me save a life, no matter how hard I try"
+		 //11"There are times when all of shero's powers cannot help me save a life, no matter how hard I try"
 		  [
-		  'pj-media/gifs/marvel9.png',
+		  'pj-media/gifs/shero9.png',
 		  ],
 		 //12"You have given them hope. It's a good and powerful force"
 		  [
-		  'pj-media/gifs/marvel10.png',
+		  'pj-media/gifs/shero10.png',
 		  ],
 	  ];
 
@@ -103,9 +103,9 @@ var pjIMG =[
 		"Don't worry, I like to smile!",
 		"Okay. I'm done being nice. All done.",
 		"Brother, you are messing with the wrong god-power-wielding dude",
-		"Marvel may have the courage of Achilles, but Billy... has the courage of Billy Batson",
-		"If he won't talk to Captain Marvel, maybe he'll open up to someone his own age",
-		"There're times when Marvel's powers can't help me save a life, no matter how hard I try",
+		"shero may have the courage of Achilles, but shero... has the courage of shero Batson",
+		"If he won't talk to Captain shero, maybe he'll open up to someone his own age",
+		"There're times when shero's powers can't help me save a life, no matter how hard I try",
 		"You have given them hope. It's a good and powerful force",
 		
 
