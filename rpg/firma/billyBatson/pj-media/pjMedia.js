@@ -36,7 +36,7 @@
       ];
 */      
 var pjIMG =[
-		//1 "It's okay, Superman, I got your signal. It's going to be okay.",
+		//1 "It's okay, Superman, I got your signal. It's going to be okay.", 
 
 		  [
 		  'pj-media/gifs/marvel1.png'
