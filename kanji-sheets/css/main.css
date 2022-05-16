@@ -11,6 +11,7 @@ a.print{ text-decoration: none;
 	color:#000;
 }
 
+
 @font-face {
   font-family: StrokeOrder;
   src: url('../fonts/KanjiStrokeOrders.ttf');
