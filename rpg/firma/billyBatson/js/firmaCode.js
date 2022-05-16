@@ -49,7 +49,7 @@ function rand( lowest, highest){
 	signature.appendChild(audio);
 //Create IMG
 	const imgCredit = document.createElement('a');
-	imgCredit.setAttribute("href", "https://heroiclegacy.foroactivo.com/u10");
+	imgCredit.setAttribute("href", "https://dc-new-frontier.foroactivo.com/u101");
 	imgCredit.setAttribute("target", "_blank");
 	signature.appendChild(imgCredit);
 	const img = document.createElement('img');
