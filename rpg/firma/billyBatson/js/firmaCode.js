@@ -58,8 +58,8 @@ function rand( lowest, highest){
 	if(imgURL.search("marvel")==-1){
 		pjName="Billy Batson";
 	}
-	img.setAttribute("alt", "Modelo de firma by Damshh");
-	img.setAttribute("title", "Modelo de firma by Damshh");
+	img.setAttribute("alt", "Modelo de firma by Damian/Billy");
+	img.setAttribute("title", "Modelo de firma by Damian/Billy");
 	imgCredit.appendChild(img);
 
 //Create TEXT
