@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&family=Ropa+Sans&family=Goldman&display=swap');
 
 :root {
-  --borders: #C13128;
+  --borders: rgb(193,49,40);
+  --borderOp:  rgba(193,49,40, 0.6);
+  --active: rgb(13,39,91);
+  --active2: rgba(13,39,91, 0.6);
   --text1:  #FEED3D;
   --text2: #e4d536;
 }
@@ -205,8 +208,8 @@ color: #fff;
 /* Style the tab */
 .tab {
   float: left;
-  background: rgb(16,46,108);
-  background: rgba(16,46,108, 0.6);
+  background: var(--borders);
+  background: var(--borderOp);
   width: 30%;
   max-height: 250px;
   overflow:auto;
