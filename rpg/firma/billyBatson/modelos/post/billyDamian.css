@@ -1,188 +1,121 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Macondo&family=Roboto&family=Bangers&display=swapp');
 
-.marvelContainer {
-  border: 20px solid #b01703;
-  border-top: none;
-  border-bottom:none;
-  margin-bottom: -60px;
-  position:relative;
+.mentiontag{
+    background-color: #140005;
+}
+.mentiontag:hover{
+    background-color: #b01703 !important;
+}
+.mentiontag:active{
+    background-color: #b01703 !important;
+}
+.mentiontag:visited{
+    background-color: #140005;
 }
 
+.partners{
+    position: relative;
+    background-color: #FEED3D;
+    width:618px;
+    font-weight: bolder;
+    padding:5px;
 
-.shazaBanner {
-  border-top: 15px solid #b01703;
-  position:relative;
+
+}
+.mTitle{
+    font-size: 45px;
+    margin-top:-17px;
+    
+}
+.mLocation{
+    position: relative;
+    font-size:35px;
+    color:#FEED3D;
+    font-weight: bolder;
+    text-shadow: 2px 2px 0px #140005;
 }
 
-.shazaName {
-  position:relative;
-  margin-top:-20px;
-  font-family: 'Bangers', cursive;
-  color:#f8f8ff;
-  text-shadow: 2px 2px #000;
-}
-.shazaRS{
-  position:relative;
-  font-family: 'Bangers', cursive;
-  overflow:auto;
-  margin-right:10px;
+.macondo{
+    font-family: 'Macondo', cursive;
 }
 
-
-.shazaRS::-webkit-scrollbar-track{
-  background-color: #000;
-}
-.shazaRS::-webkit-scrollbar{
-  width: 8px;
-  background-color:  #fff;
-}
-.shazaRS::-webkit-scrollbar-thumb{
-  background-color: #b01703;
-  border: 2px solid #b01703;
+.mHeader{
+    font-size:35px;
+    width:700px;
+    height: 25px;
 }
 
-.shazaHeaders{
-  position:relative;
-  margin-bottom:-10px;
-  color:#f8f8ff;
-  text-shadow: 2px 2px #000;
-  z-index: 3;
+.billy{
+    position: relative;
+    border-radius: 50%;
+    width: 120px;
+    top:200px;
+    border: 6px solid #b01703;
+
 }
-
-.shazaPeople {
-  border-bottom: 8px solid #b01703;
-  border-top: 8px solid #b01703;
-  position:relative;
-  z-index: 2;
-  overflow: hidden;
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+.bubbleText{
+    bottom:69px;
+    right:12px;
+    position:absolute;
+    font-family: 'Lato', sans-serif;
+    font-size:12px;
+    width: 124px;
+    color:#140005;
+    text-align: center;
+    line-height : 12px;
+    text-decoration:none;
 }
-
-.shazaPhoto {
-  transition: transform .2s; /* Animation */
-  z-index: 1;
+.rol{
+    background: #211522;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    width:600px;
+    border-top: 6px solid #FEED3D;
+    padding:15px;
 }
-
-.shazaPhoto:hover {
-  transform: scale(1.1); 
+.mBody{
+    background-color: #140005;
+    width:712px;
+    color:white;
 }
-
-.shazaImage {
-  display: block;
-}
-
-.audiojs {
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #b01703), color-stop(0.5, #b01703), color-stop(0.51, #b01703), color-stop(1, #b01703));
-width: 640px;
-}
-
-.audiojs .scrubber {
-width: 473px;
-background:#000;
-}
-
-.shazaPost {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  transition: 0.9s ease;
-  background-color: #000;
-}
-
-.marvelContainer:hover .shazaPost {
-  opacity: 1;
-}
-
-
-
-.shazaPerson {
-  border: 2px solid #b01703;
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  max-width: 100px;
-  margin: auto;
-  overflow: hidden;
-  justify-content: center;
-}
-
-.shazaPerson .shazaPerson-overlay {
-  background: rgba(0,0,0,0.7);
-  position: absolute;
-  height: 99%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  -webkit-transition: all 0.4s ease-in-out 0s;
-  -moz-transition: all 0.4s ease-in-out 0s;
-  transition: all 0.4s ease-in-out 0s;
-}
-
-.shazaPerson:hover .shazaPerson-overlay{
-  opacity: 1;
-}
-
-.shazaPerson-image{
-  width: 100%;
-}
-
-.shazaPerson-details {
-  position: absolute;
-  text-align: center;
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  -moz-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-.shazaPerson:hover .shazaPerson-details{
-  top: 50%;
-  left: 50%;
-  opacity: 1;
-}
-
-.shazaPerson-details h3{
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5em;
-  text-transform: uppercase;
-}
-
-.shazaPerson-details p{
-  color: #fff;
-  font-size: 0.8em;
-}
-
-.fadeIn-bottom{
-  top: 80%;
-}
-
 .credits{
-  background-color:#b01703;
+    font-size:25px;
+    width:700px;
+    height:15px;
+    background-color: #140005;
+}
+.mBorder{
+    background-color:#b01703;
+    border: 6px solid #b01703;
+    border-top:none;
+    border-bottom:none;
+
+}
+
+.mBanner{
+    position:relative;
+    background-size: cover;
+    background-image:url('https://shiharokuu.github.io/rpg/billy/images/marvel.gif');
+    max-width: 700px;
+    min-height:300px;
+    border: 6px solid #b01703;
+}
+
+
+
+
+.mFont{
   font-family: 'Bangers', cursive;
   color:#f8f8ff;
-  text-shadow: 2px 2px #000;
-  border: 20px solid #b01703;
-  border-top:none;
-  border-bottom:none;
+  text-shadow: 2px 2px #140005;
+  text-align: center;
 }
+
 a.creditsLink:link { text-decoration:none;color:#f8f8ff; text-shadow: 2px 2px #000;}
 a.creditsLink:visited { text-decoration:none; color:#f8f8ff;text-shadow: 2px 2px #000;}
-a.creditsLink:hover { text-decoration:none; color:#f8f8ff;text-shadow: 2px 2px #000;}
+a.creditsLink:hover { text-decoration:none; color:#bdb1c9;text-shadow: 2px 2px #000;}
 a.creditsLink:active { text-decoration:none; color:#f8f8ff;text-shadow: 2px 2px #000;}
+
+a.user {text-decoration:none; color:#000; }
+a.user:hover {text-decoration:none; color:#b01703;  font-family: 'Bangers', cursive;
+}
