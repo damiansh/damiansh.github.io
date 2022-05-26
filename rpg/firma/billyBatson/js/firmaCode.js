@@ -38,8 +38,8 @@ function rand( lowest, highest){
 	var pjName = "Captain Marvel";
 
 //HTML GENERATOR
-	const variant1 = "#ABB5CB";
-	const variant2 = "#ABABAB"; 
+	const variant1 = "#FEED3D";
+	const variant2 = "#e4d536"; 
 	const signature = document.getElementById('kenta');
 //Create Audio Tag
 	const audio = document.createElement('audio');
@@ -66,11 +66,11 @@ function rand( lowest, highest){
 	const textBlock = document.createElement('div');
 	textBlock.classList.add('pjText');
 	signature.appendChild(textBlock);
-/*
+
 //Create Ability
 	const ability = document.createElement('div');
 	ability.classList.add('pjHab');
-	ability.innerHTML = "Billy Batson";
+	ability.innerHTML = "Chronology";
 	textBlock.appendChild(ability);
 //Create Ability Text
 	const abilityText = document.createElement('div');
@@ -122,7 +122,7 @@ function rand( lowest, highest){
 	ability.appendChild(abilityText);
 	// Get the element with id="defaultOpen" and click on it
 	buttonDefault.click();	
-*/
+
 //Create Quote
 	const quote = document.createElement('span');
 	quote.classList.add('pjQUOTE');

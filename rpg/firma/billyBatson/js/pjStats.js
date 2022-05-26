@@ -45,27 +45,27 @@ stats = [{
 
 skill = [
 		{
-			"name": "Me debes dinero",
-			"shortName": "Dame dinero",
-			"effect": "La persona que lee esto me debe un dólar cada vez que lo ve. (?)",
-			"desc": "El efecto de esta técnica es que aún no tengo ficha de habilidades, así que me debes dinero (?).."
+			"name": "<a target='_blank' href='https://dc-new-frontier.foroactivo.com/t361-welcome-to-mario-kart-bart-allen#1583'>Welcome to Mario Kart!</a>",
+			"shortName": "Issue #1",
+			"effect": "Guest-Starring: <a target='_blank' href='https://dc-new-frontier.foroactivo.com/u94' style='color:#1BA640'>Kid Flash (Bart Allen)</a>",
+			"desc": "Billy Batson, secretamente The World’s Mightiest Mortal, decide tomarse un tiempo libre y disfrutar un nuevo simulador usando Mario Kart en un arcade en San Francisco; sin esperarse encontrarse con Bart Allen, mejor conocido como Kid Flash, quién decide tomar una decisión de último segundo, para poder disfrutar del juego, claro, a expensas de Billy, literalmente. "
 		},
 		{
-			"name": "Técnica 2: ???",
-			"shortName": "T2: ???",
-			"effect": "efecto#2 N/A",
-			"desc": "descripción#2 N/A."
+			"name": "<a target='_blank' href='https://dc-new-frontier.foroactivo.com/t370-not-central-park-but-will-do-harley'>Not central park, but will do</a>",
+			"shortName": "Issue #2",
+			"effect": "Guest-Starring: <a target='_blank' href='https://dc-new-frontier.foroactivo.com/u2' style='color:#573c8f'>Harleen Quinzel</a>",
+			"desc": "En una colaboración con Whiz Radio, Billy trabaja de voluntariado en Gotham en un comedor. Tras finalizar la jornada y donarle algo de ropa a algunos jóvenes, Billy decide descansar en el parque, no sabiendo que puede que ahí termine encontrarse con cierta payasita. "
 		},		{
-			"name": "Técnica 3: ???",
-			"shortName": "T3: ???",
-			"effect": "efecto#3 N/A",
-			"desc": "descripción#3 N/A."
+			"name": "TBA",
+			"shortName": "Issue #3",
+			"effect": "TBA",
+			"desc": "TBA"
 		},
 		{
-			"name": "Técnica 4: ???",
-			"shortName": "T4: ???",
-			"effect": "efecto#4 N/A",
-			"desc": "descripción#4 N/A."
+			"name": "TBA",
+			"shortName": "Issue #4",
+			"effect": "TBA",
+			"desc": "TBA"
 		}
 	];
 
