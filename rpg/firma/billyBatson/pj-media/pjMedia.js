@@ -9,7 +9,9 @@
 	  'pj-media/music/thunderstruck.mp3',
 	  'pj-media/music/drill.mp3',
 	  'pj-media/music/gattai.mp3',
-	  'pj-media/music/rappu.mp3'
+	  'pj-media/music/rappu.mp3',
+	  'pj-media/music/libera.mp3'
+
 
 
       ];
