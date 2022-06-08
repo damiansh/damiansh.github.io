@@ -7,8 +7,11 @@
 	  'pj-media/music/YouSayRun.mp3',
 	  'pj-media/music/shazamTheme.mp3',
 	  'pj-media/music/thunderstruck.mp3',
+	  'pj-media/music/drill.mp3',
+	  'pj-media/music/gattai.mp3',
+	  'pj-media/music/rappu.mp3'
 
-	  
+
       ];
 /*
 
